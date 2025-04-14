@@ -22,13 +22,13 @@ What could you use this for?
 
 
 ## Authors
-Jamie Stark
-Chris Thomas
-Erik Fraas 
-Wade Hallerud
+# Jamie Stark
+# Chris Thomas
+# Erik Fraas 
+# Wade Hallerud
 
 
-## References for any code used that is not your own:
+## References for any code used that is not our own:
 
 
 Inspiration:
