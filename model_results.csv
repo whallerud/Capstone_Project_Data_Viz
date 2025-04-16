@@ -1,0 +1,4 @@
+Model,Params,Accuracy
+Logistic Regression,max_iter=1000,81.01
+Random Forest,"n_estimators=100, max_depth=5",81.56
+K-Nearest Neighbors,n_neighbors=3,81.01
