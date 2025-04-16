@@ -10,54 +10,51 @@ from sqlalchemy import create_engine
 pip install sqlalchemy psycopg2-binary
 
 
-# Load dataset
-df = pd.read_csv('titanic.csv')  # Replace with your path
+# Titanic Survival Prediction using train.csv + PostgreSQL export
 
-# Basic cleanup
-df = df.drop(columns=['PassengerId', 'Name', 'Ticket', 'Cabin'])
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+from sqlalchemy import create_engine
 
-# Fill missing values
+# --- Load training data ---
+df = pd.read_csv('/mnt/data/train.csv')  # Uploaded training dataset
+
+# --- Drop irrelevant columns ---
+df.drop(columns=['PassengerId', 'Name', 'Ticket', 'Cabin'], inplace=True)
+
+# --- Fill missing values ---
 df['Age'].fillna(df['Age'].median(), inplace=True)
 df['Embarked'].fillna(df['Embarked'].mode()[0], inplace=True)
 
-# Encode categorical variables
+# --- Encode categorical variables ---
 df['Sex'] = LabelEncoder().fit_transform(df['Sex'])        # Male=1, Female=0
 df['Embarked'] = LabelEncoder().fit_transform(df['Embarked'])  # S=2, C=0, Q=1
 
-# Normalize numerical features
+# --- Normalize numerical features ---
 scaler = StandardScaler()
 df[['Age', 'Fare']] = scaler.fit_transform(df[['Age', 'Fare']])
 
-# Features & target
+# --- Features & target ---
 X = df.drop('Survived', axis=1)
 y = df['Survived']
 
-# Train/test split
+# --- Train/test split ---
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Train Logistic Regression
+# --- Train Logistic Regression model ---
 model = LogisticRegression(max_iter=1000)
 model.fit(X_train, y_train)
 
-# Predict & evaluate
+# --- Evaluate model ---
 y_pred = model.predict(X_test)
 print("Accuracy:", accuracy_score(y_test, y_pred))
 print("\nClassification Report:\n", classification_report(y_test, y_pred))
 
-# --- Save cleaned data to PostgreSQL ---
-
-# Replace these with your actual credentials
+# --- Save cleaned training data to PostgreSQL ---
+# Fill in your credentials here
 db_user = 'your_username'
-db_password = 'your_password'
-db_host = 'localhost'
-db_port = '5432'  # Default PostgreSQL port
-db_name = 'your_database_name'
-
-# Format: postgresql://username:password@host:port/database
-connection_string = f'postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}'
-engine = create_engine(connection_string)
-
-# Save the DataFrame to a table called 'titanic_data'
-df.to_sql('titanic_data', engine, if_exists='replace', index=False)
-
-print("\n✅ Cleaned data saved to PostgreSQL database.")
+db_password = 'your_password
