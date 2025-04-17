@@ -1,3 +1,82 @@
+# Titanic Predictions — Data Science Capstone
+
+This project models survival outcomes on the Titanic using cleaned and engineered features. Multiple classification models are trained and evaluated, with results exported for database and dashboard use.
+
+---
+
+## Project Structure
+
+- `Titanic_Predictions.ipynb` – Core notebook for data exploration, modeling, and exports  
+- `Exports/` – Folder containing output CSVs:
+  - `titanic_cleaned.csv`
+  - `model_results.csv`
+  - `beneficiary_survivors.csv`
+- `README.md` – Project overview and narrative
+
+---
+
+## Environment Setup (Conda)
+
+To set up your environment using Anaconda:
+
+```bash
+conda create -n titanic_env python=3.9
+conda activate titanic_env
+
+# Required libraries
+conda install pandas scikit-learn seaborn matplotlib sqlalchemy
+
+# Optional: PostgreSQL export support ******************************UNFINISHED
+conda install -c conda-forge pg8000
+```
+
+---
+
+## Running the Project
+
+Open `Titanic_Predictions.ipynb` in Jupyter Notebook or JupyterLab.
+
+Run all cells in order:
+
+- Cleans and prepares the data
+- Trains and evaluates models
+- Identifies "unexpected survivors"
+- Exports results to CSV and optionally PostgreSQL
+
+---
+
+## CSV Outputs
+
+These files are generated in the `Exports/` folder:
+
+| File Name                  | Description                                      |
+|---------------------------|--------------------------------------------------|
+| `titanic_cleaned.csv`     | Cleaned dataset with engineered features         |
+| `model_results.csv`       | Accuracy results for each model                  |
+| `beneficiary_survivors.csv` | Passengers who survived against prediction     |
+
+---
+
+## PostgreSQL Integration
+
+To export the datasets into PostgreSQL, use the built-in function inside the notebook:
+
+```python
+export_to_postgresql(engine)
+```
+
+This will write the following tables to your PostgreSQL database:
+
+| Table Name             | Source DataFrame     |
+|------------------------|----------------------|
+| `titanic_cleaned`      | `df_cleaned`         |
+| `model_results`        | `results_df`         |
+| `beneficiary_survivors`| `beneficiaries_df`   |
+
+Ensure your SQLAlchemy engine is properly configured.
+
+---
+
 # Titanic: Who Was Left Behind?  
 ### A Machine Learning Narrative About Loss, Survival, and Mystery
 
@@ -20,7 +99,7 @@ Using the Kaggle Titanic dataset, we trained three machine learning models — *
 We also added a twist by identifying **"mystery survivors"** — passengers our models confidently predicted would not survive, but did anyway. These cases helped surface patterns of social advantage and anomaly in historical outcomes.
 
 ---
-git 
+
 ## Data Preprocessing
 
 - Dropped: `Name`, `Ticket`, `Cabin`, `PassengerId`
@@ -40,9 +119,9 @@ git
 
 | Model               | Key Params        | Accuracy |
 |--------------------|-------------------|----------|
-| Logistic Regression | max_iter=1000     | ~80%     |
-| K-Nearest Neighbors | n_neighbors=3     | ~81%     |
-| Decision Tree       | max_depth=5       | ~80%     |
+| Logistic Regression | max_iter=1000     | ~78%     |
+| K-Nearest Neighbors | n_neighbors=3     | ~76%     |
+| Decision Tree       | max_depth=5       | ~79%     |
 
 All models were evaluated on test data using accuracy and classification reports. A comparison CSV and bar plot are included in the notebook.
 
@@ -74,4 +153,6 @@ The cleaned dataset and model results were written to a PostgreSQL database via 
 
 ---
 
-## Files in This Repository
+## Dataset Source
+
+[Kaggle: Titanic - Machine Learning from Disaster](https://www.kaggle.com/c/titanic)
