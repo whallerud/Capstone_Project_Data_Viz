@@ -1,0 +1,4 @@
+Model,Accuracy
+Logistic Regression,79.89
+K-Nearest Neighbors,81.01
+Decision Tree,79.89
