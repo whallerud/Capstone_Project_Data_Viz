@@ -156,3 +156,9 @@ The cleaned dataset and model results were written to a PostgreSQL database via 
 ## Dataset Source
 
 [Kaggle: Titanic - Machine Learning from Disaster](https://www.kaggle.com/c/titanic)
+
+---
+
+##Recieved Assistance From
+- Chat Gpt 
+-Co Pilot
