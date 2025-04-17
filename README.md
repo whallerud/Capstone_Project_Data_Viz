@@ -1,9 +1,9 @@
-# 🚢 Titanic: Who Was Left Behind?
+# Titanic: Who Was Left Behind?  
 ### A Machine Learning Narrative About Loss, Survival, and Mystery
 
 ---
 
-## 🎯 Objective
+## Objective
 
 Rather than asking *who survived the Titanic disaster*, this project flips the question to ask:
 
@@ -13,15 +13,15 @@ We explored this inverted classification challenge to shift our perspective on t
 
 ---
 
-## 🧠 Summary
+## Summary
 
 Using the Kaggle Titanic dataset, we trained three machine learning models — **Logistic Regression**, **K-Nearest Neighbors**, and **Decision Tree Classifier** — to predict **non-survivors** based on passenger characteristics. We engineered new features (`Title`, `FamilySize`), handled missing data, and standardized inputs for consistency.
 
 We also added a twist by identifying **"mystery survivors"** — passengers our models confidently predicted would not survive, but did anyway. These cases helped surface patterns of social advantage and anomaly in historical outcomes.
 
 ---
-
-## 🧹 Data Preprocessing
+git 
+## Data Preprocessing
 
 - Dropped: `Name`, `Ticket`, `Cabin`, `PassengerId`
 - Filled Missing:
@@ -36,19 +36,19 @@ We also added a twist by identifying **"mystery survivors"** — passengers our 
 
 ---
 
-## 🤖 Models Tested
+## Models Tested
 
-| Model              | Key Params                   | Accuracy |
-|-------------------|------------------------------|----------|
-| LogisticRegression | max_iter=1000                | ~78%     |
-| K-Nearest Neighbors | n_neighbors=3               | ~76%     |
-| Decision Tree      | max_depth=5 (tuned)          | ~79%     |
+| Model               | Key Params        | Accuracy |
+|--------------------|-------------------|----------|
+| Logistic Regression | max_iter=1000     | ~80%     |
+| K-Nearest Neighbors | n_neighbors=3     | ~81%     |
+| Decision Tree       | max_depth=5       | ~80%     |
 
 All models were evaluated on test data using accuracy and classification reports. A comparison CSV and bar plot are included in the notebook.
 
 ---
 
-## 🔍 "Mystery Survivors" Feature
+## "Mystery Survivors" Feature
 
 We searched for high-confidence model misclassifications — passengers predicted *not to survive* but who actually did. These became the emotional and narrative core of our exploration.
 
@@ -60,13 +60,13 @@ This approach helped us explore:
 
 ---
 
-## 💾 SQL Storage (Optional Step)
+## SQL Storage (Optional Step)
 
 The cleaned dataset and model results were written to a PostgreSQL database via SQLAlchemy for persistent storage and potential integration with BI tools.
 
 ---
 
-## 🖼️ Visualization
+## Visualization
 
 - Model comparison bar plot
 - Optional: highlight “mystery survivors” by feature (age, class, sex)
@@ -74,6 +74,4 @@ The cleaned dataset and model results were written to a PostgreSQL database via 
 
 ---
 
-## 🧪 Files in This Repository
-
-
+## Files in This Repository
