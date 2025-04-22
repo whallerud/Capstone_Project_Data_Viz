@@ -42,7 +42,6 @@ Final model results are clearly displayed within the notebook.
 - Chris Thomas  
 - Jamie Stark  
 - Erik Fraas  
-- Assisted by ChatGPT
 ---
 
 ##Recieved Assistance From
